@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeCare Health Hospital | Complete Healthcare System</title>
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS for a cleaner look and hover effects */
+        body {
+            background-color: #f0f8ff;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .registration-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        footer {
+            margin-top: 60px;
+            background: #1e2a3a;
+            color: #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+        .doctor-card {
+            transition: transform 0.3s;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+        .rating-star {
+            color: #ffc107;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+        .appointment-badge {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================== 1. NAVBAR ======================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hospital-user"></i> SafeCare Health Hospital
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#registration">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#appointments">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======================== 2. MAIN CONTENT ======================== -->
+    <div class="container">
+
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1><i class="fas fa-notes-medical"></i> SafeCare Health Hospital</h1>
+            <p>Register as a patient, book appointments with top doctors, and manage your health journey.</p>
+        </div>
+
+        <!-- Bootstrap CAROUSEL -->
+        <div id="medicalCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#medicalCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#medicalCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#medicalCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner rounded-4 shadow">
+                <div class="carousel-item active">
+                    <img src="https://picsum.photos/id/104/1200/400" class="d-block w-100" alt="Hospital">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <h5>Expert Doctors</h5>
+                        <p>50+ specialists across 20 departments</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/id/20/1200/400" class="d-block w-100" alt="Doctor">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <h5>Modern Facilities</h5>
+                        <p>State-of-the-art technology</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/id/26/1200/400" class="d-block w-100" alt="Care">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                        <h5>24/7 Emergency Care</h5>
+                        <p>Always here for you</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#medicalCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#medicalCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <div class="row">
+            <!-- Left Column: PATIENT REGISTRATION FORM -->
+            <div class="col-lg-7" id="registration">
+                <div class="registration-form">
+                    <h3><i class="fas fa-user-plus"></i> Patient Registration</h3>
+                    <p class="text-muted">Create your account to book appointments. <span class="badge bg-info">Required for booking</span></p>
+                    
+                    <!-- Bootstrap FORM with complete patient info -->
+                    <form id="patientForm">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="fullName" placeholder="e.g., John Michael Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="mobile" placeholder="+63 912 345 6789" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="dob" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Blood Type</label>
+                                <select class="form-select" id="bloodType">
+                                    <option>A+</option><option>A-</option><option>B+</option>
+                                    <option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Emergency Contact</label>
+                                <input type="text" class="form-control" id="emergencyContact" placeholder="Name & Number">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Register Patient</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </form>
+                    <div id="alertPlaceholder" class="mt-3"></div>
+                </div>
+            </div>
+
+            <!-- Right Column: STATS CARD & ACCORDION -->
+            <div class="col-lg-5">
+                <!-- Bootstrap CARD -->
+                <div class="card card-hover mb-4 shadow-sm border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-chart-line"></i> Hospital Stats
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Active Patients: <span id="patientCount" class="badge bg-success">0</span></h5>
+                        <p class="card-text">Total Appointments Today: <strong id="todayAppointments">0</strong></p>
+                        <a href="#" class="btn btn-outline-primary btn-sm" id="liveAlertBtn">
+                            <i class="fas fa-bell"></i> Live Update
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bootstrap ACCORDION FAQ -->
+                <div class="accordion" id="accordionFAQ">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                📋 How to book an appointment?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">1. Register as a patient first. 2. Go to Doctors section. 3. Click "Book Appointment" on any doctor. 4. Select date and time.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                💳 Insurance & Payment
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">We accept HMO, PhilHealth, Credit Cards, and Cash. <span class="badge bg-success">Multiple Options</span></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                🕒 Visiting Hours
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">Mon-Fri: 8am - 7pm | Sat: 9am - 4pm | Sun: Emergency Only (10am-2pm for out-patient)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOCTORS SECTION -->
+        <div class="mt-5" id="doctors">
+            <h3><i class="fas fa-user-md"></i> Our Medical Specialists</h3>
+            <p class="text-muted">Book an appointment with any of our experienced doctors</p>
+            <div class="row" id="doctorsContainer">
+                <!-- Doctors will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <!-- APPOINTMENTS SECTION with TABS -->
+        <div class="mt-5" id="appointments">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3><i class="fas fa-calendar-alt"></i> My Appointments</h3>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#infoModal">
+                    <i class="fas fa-info-circle"></i> Hospital Guidelines
+                </button>
+            </div>
+            
+            <!-- Bootstrap Tabs for Appointment Categories -->
+            <ul class="nav nav-tabs mt-3" id="appointmentTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab">Upcoming</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab">Completed</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cancelled" type="button" role="tab">Cancelled</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="upcoming" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr><th>Doctor</th><th>Specialty</th><th>Date</th><th>Time</th><th>Status</th><th>Actions</th></tr>
+                            </thead>
+                            <tbody id="upcomingAppointments"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="completed" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark"><tr><th>Doctor</th><th>Specialty</th><th>Date</th><th>Review</th></tr></thead>
+                            <tbody id="completedAppointments"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="cancelled" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark"><tr><th>Doctor</th><th>Specialty</th><th>Date</th><th>Reason</th></tr></thead>
+                            <tbody id="cancelledAppointments"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 SafeCare Health Hospital - Complete Healthcare Management System</p>
+        <p><i class="fas fa-shield-alt"></i> Your health data is protected and secure</p>
+    </footer>
+
+    <!-- ======================== MODAL STRUCTURE ======================== -->
+    <div class="modal fade" id="infoModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">⚠️ Hospital Guidelines</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul><li>✅ Wear a mask at all times</li><li>✅ Use alcohol rub at entrance</li><li>✅ Only 1 companion allowed</li></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="modalConfirmBtn">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Rate Your Experience</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="reviewDoctorId">
+                    <input type="hidden" id="reviewAppointmentId">
+                    <label>Rating (1-5 stars)</label>
+                    <select class="form-select" id="reviewRating">
+                        <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ - Good</option>
+                        <option value="3">⭐⭐⭐ - Average</option>
+                        <option value="2">⭐⭐ - Poor</option>
+                        <option value="1">⭐ - Terrible</option>
+                    </select>
+                    <label class="mt-3">Your Review</label>
+                    <textarea class="form-control" id="reviewText" rows="3" placeholder="Share your experience with the doctor..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitReviewBtn">Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ======================== COMPLETE JAVASCRIPT ======================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ========== DATA STORAGE ==========
+            let patients = [];
+            let doctors = [
+                { id: 1, name: "Dr. Sarah Johnson", specialty: "Cardiologist", experience: "15 years", schedule: "Mon/Wed/Fri 9am-5pm", rating: 4.8, reviews: [] },
+                { id: 2, name: "Dr. Michael Chen", specialty: "Neurologist", experience: "12 years", schedule: "Tue/Thu/Sat 10am-6pm", rating: 4.9, reviews: [] },
+                { id: 3, name: "Dr. Emily Rodriguez", specialty: "Pediatrician", experience: "10 years", schedule: "Mon-Fri 8am-4pm", rating: 4.7, reviews: [] },
+                { id: 4, name: "Dr. James Wilson", specialty: "Orthopedic", experience: "20 years", schedule: "Mon/Wed 9am-7pm", rating: 4.9, reviews: [] },
+                { id: 5, name: "Dr. Lisa Patel", specialty: "Dermatologist", experience: "8 years", schedule: "Tue/Thu/Fri 10am-6pm", rating: 4.6, reviews: [] }
+            ];
+            
+            let appointments = [];
+            let currentPatientId = null;
+            
+            // Helper function to show alerts
+            function showAlert(message, type) {
+                const alertPlaceholder = document.getElementById('alertPlaceholder');
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+                alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+                alertPlaceholder.innerHTML = '';
+                alertPlaceholder.appendChild(alertDiv);
+                setTimeout(() => alertDiv.remove(), 4000);
+            }
+            
+            // Display doctors
+            function displayDoctors() {
+                const container = document.getElementById('doctorsContainer');
+                container.innerHTML = '';
+                doctors.forEach(doctor => {
+                    const avgRating = doctor.reviews.length > 0 ? 
+                        (doctor.reviews.reduce((sum, r) => sum + r.rating, 0) / doctor.reviews.length).toFixed(1) : doctor.rating;
+                    
+                    container.innerHTML += `
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card doctor-card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${doctor.name}</h5>
+                                    <p class="text-primary"><strong>${doctor.specialty}</strong></p>
+                                    <p><i class="fas fa-clock"></i> ${doctor.schedule}</p>
+                                    <p><i class="fas fa-briefcase"></i> ${doctor.experience}</p>
+                                    <div class="rating-star">
+                                        ${generateStars(avgRating)} (${doctor.reviews.length} reviews)
+                                    </div>
+                                    ${currentPatientId ? 
+                                        `<button class="btn btn-primary btn-sm mt-2" onclick="bookAppointment(${doctor.id})">
+                                            <i class="fas fa-calendar-plus"></i> Book Appointment
+                                        </button>` : 
+                                        `<button class="btn btn-secondary btn-sm mt-2" disabled>Register first to book</button>`
+                                    }
+                                    <button class="btn btn-outline-info btn-sm mt-2" data-bs-toggle="collapse" data-bs-target="#reviews${doctor.id}">
+                                        View Reviews
+                                    </button>
+                                    <div class="collapse mt-2" id="reviews${doctor.id}">
+                                        <div class="card card-body bg-light">
+                                            ${doctor.reviews.length > 0 ? 
+                                                doctor.reviews.map(r => `<p><strong>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</strong> - ${r.comment}<br><small class="text-muted">- ${r.patientName}</small></p><hr>`).join('') : 
+                                                '<em>No reviews yet</em>'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            // Generate star ratings
+            function generateStars(rating) {
+                let stars = '';
+                for(let i = 1; i <= 5; i++) {
+                    stars += i <= rating ? '★' : '☆';
+                }
+                return stars;
+            }
+            
+            // Display appointments
+            function displayAppointments() {
+                if(!currentPatientId) return;
+                
+                const patientAppointments = appointments.filter(a => a.patientId === currentPatientId);
+                const upcoming = patientAppointments.filter(a => a.status === 'upcoming');
+                const completed = patientAppointments.filter(a => a.status === 'completed');
+                const cancelled = patientAppointments.filter(a => a.status === 'cancelled');
+                
+                // Upcoming table with BOTH Complete and Cancel buttons
+                const upcomingBody = document.getElementById('upcomingAppointments');
+                upcomingBody.innerHTML = '';
+                if(upcoming.length === 0) {
+                    upcomingBody.innerHTML = '<tr><td colspan="6" class="text-center">No upcoming appointments</td></tr>';
+                } else {
+                    upcoming.forEach(app => {
+                        const doctor = doctors.find(d => d.id === app.doctorId);
+                        upcomingBody.innerHTML += `
+                            <tr>
+                                <td>${doctor.name}</td>
+                                <td>${doctor.specialty}</td>
+                                <td>${app.date}</td>
+                                <td>${app.time}</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-success btn-sm me-1" onclick="completeAppointment(${app.id})">
+                                        <i class="fas fa-check"></i> Complete
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" onclick="cancelAppointment(${app.id})">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                // Completed table
+                const completedBody = document.getElementById('completedAppointments');
+                completedBody.innerHTML = '';
+                if(completed.length === 0) {
+                    completedBody.innerHTML = '<tr><td colspan="4" class="text-center">No completed appointments</td></tr>';
+                } else {
+                    completed.forEach(app => {
+                        const doctor = doctors.find(d => d.id === app.doctorId);
+                        completedBody.innerHTML += `
+                            <tr>
+                                <td>${doctor.name}</td>
+                                <td>${doctor.specialty}</td>
+                                <td>${app.date}</td>
+                                <td>
+                                    ${app.reviewed ? 
+                                        '<span class="badge bg-success"><i class="fas fa-star"></i> Reviewed</span>' : 
+                                        `<button class="btn btn-primary btn-sm" onclick="openReviewModal(${app.id}, ${doctor.id})">
+                                            <i class="fas fa-edit"></i> Write Review
+                                        </button>`
+                                    }
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                // Cancelled table
+                const cancelledBody = document.getElementById('cancelledAppointments');
+                cancelledBody.innerHTML = '';
+                if(cancelled.length === 0) {
+                    cancelledBody.innerHTML = '<tr><td colspan="4" class="text-center">No cancelled appointments</td></tr>';
+                } else {
+                    cancelled.forEach(app => {
+                        const doctor = doctors.find(d => d.id === app.doctorId);
+                        cancelledBody.innerHTML += `
+                            <tr>
+                                <td>${doctor.name}</td>
+                                <td>${doctor.specialty}</td>
+                                <td>${app.date}</td>
+                                <td>Cancelled by patient</td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                document.getElementById('todayAppointments').innerText = upcoming.length;
+            }
+            
+            // COMPLETE appointment function (NEW)
+            window.completeAppointment = function(appointmentId) {
+                const appointment = appointments.find(a => a.id === appointmentId);
+                if(appointment && confirm('Mark this appointment as completed?')) {
+                    appointment.status = 'completed';
+                    appointment.reviewed = false;
+                    displayAppointments();
+                    showAlert('Appointment marked as completed! You can now leave a review.', 'success');
+                }
+            };
+            
+            // Book appointment function
+            window.bookAppointment = function(doctorId) {
+                if(!currentPatientId) {
+                    showAlert('Please register first before booking appointments!', 'warning');
+                    return;
+                }
+                
+                const today = new Date();
+                const futureDate = new Date();
+                futureDate.setDate(today.getDate() + 3);
+                const dateStr = futureDate.toISOString().split('T')[0];
+                const times = ['9:00 AM', '10:00 AM', '11:00 AM', '2:00 PM', '3:00 PM', '4:00 PM'];
+                const randomTime = times[Math.floor(Math.random() * times.length)];
+                
+                const newAppointment = {
+                    id: Date.now(),
+                    patientId: currentPatientId,
+                    doctorId: doctorId,
+                    date: dateStr,
+                    time: randomTime,
+                    status: 'upcoming',
+                    reviewed: false
+                };
+                appointments.push(newAppointment);
+                displayAppointments();
+                showAlert(`✅ Appointment booked successfully with ${doctors.find(d => d.id === doctorId).name} on ${dateStr} at ${randomTime}`, 'success');
+            };
+            
+            // Cancel appointment
+            window.cancelAppointment = function(appointmentId) {
+                const appointment = appointments.find(a => a.id === appointmentId);
+                if(appointment && confirm('Cancel this appointment?')) {
+                    appointment.status = 'cancelled';
+                    displayAppointments();
+                    showAlert('Appointment cancelled', 'info');
+                }
+            };
+            
+            // Open review modal
+            window.openReviewModal = function(appointmentId, doctorId) {
+                document.getElementById('reviewAppointmentId').value = appointmentId;
+                document.getElementById('reviewDoctorId').value = doctorId;
+                new bootstrap.Modal(document.getElementById('reviewModal')).show();
+            };
+            
+            // Submit review
+            document.getElementById('submitReviewBtn').addEventListener('click', function() {
+                const appointmentId = parseInt(document.getElementById('reviewAppointmentId').value);
+                const doctorId = parseInt(document.getElementById('reviewDoctorId').value);
+                const rating = parseInt(document.getElementById('reviewRating').value);
+                const comment = document.getElementById('reviewText').value;
+                
+                const appointment = appointments.find(a => a.id === appointmentId);
+                if(appointment) {
+                    appointment.reviewed = true;
+                    const patient = patients.find(p => p.id === currentPatientId);
+                    const doctor = doctors.find(d => d.id === doctorId);
+                    doctor.reviews.push({
+                        patientName: patient.fullName,
+                        rating: rating,
+                        comment: comment || 'No comment provided'
+                    });
+                    displayDoctors();
+                    displayAppointments();
+                    showAlert('Thank you for your review!', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('reviewModal')).hide();
+                    document.getElementById('reviewText').value = '';
+                }
+            });
+            
+            // Patient Registration Form
+            document.getElementById('patientForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const mobile = document.getElementById('mobile').value.trim();
+                const dob = document.getElementById('dob').value;
+                
+                if(!fullName || !email || !mobile || !dob) {
+                    showAlert('Please fill all required fields!', 'danger');
+                    return;
+                }
+                
+                const newPatient = {
+                    id: Date.now(),
+                    fullName: fullName,
+                    email: email,
+                    mobile: mobile,
+                    dob: dob,
+                    bloodType: document.getElementById('bloodType').value,
+                    emergencyContact: document.getElementById('emergencyContact').value
+                };
+                
+                patients.push(newPatient);
+                currentPatientId = newPatient.id;
+                document.getElementById('patientCount').innerText = patients.length;
+                
+                showAlert(`🎉 Welcome ${fullName}! You can now book appointments with our doctors.`, 'success');
+                displayDoctors();
+                displayAppointments();
+                document.getElementById('patientForm').reset();
+            });
+            
+            // Live Alert Button
+            document.getElementById('liveAlertBtn').addEventListener('click', function() {
+                const cardBody = document.querySelector('.card-body');
+                const existingAlert = document.querySelector('.live-alert');
+                if(existingAlert) existingAlert.remove();
+                
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info alert-dismissible fade show mt-2 live-alert';
+                alertDiv.innerHTML = `🕒 Live Update: Current wait time is 15 minutes. ${patients.length} patients registered today.`;
+                cardBody.appendChild(alertDiv);
+                setTimeout(() => alertDiv.remove(), 5000);
+            });
+            
+            // Modal event listener (required by rubric)
+            const modal = document.getElementById('infoModal');
+            modal.addEventListener('show.bs.modal', function() {
+                console.log('Guidelines modal opened');
+                const modalTitle = modal.querySelector('.modal-header h5');
+                modalTitle.innerHTML = '⚠️ Updated Guidelines - ' + new Date().toLocaleDateString();
+            });
+            
+            document.getElementById('modalConfirmBtn').addEventListener('click', function() {
+                bootstrap.Modal.getInstance(modal).hide();
+                showAlert('Thank you for following hospital guidelines!', 'info');
+            });
+            
+            // Initialize
+            displayDoctors();
+            displayAppointments();
+        });
+    </script>
+</body>
+</html>
