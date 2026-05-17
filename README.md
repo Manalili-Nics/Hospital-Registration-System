@@ -1,4 +1,3 @@
-@"
 # 🏥 SafeCare Health Hospital - Complete Healthcare Registration System
 
 ## 📋 Project Overview
